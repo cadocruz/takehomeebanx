@@ -18,6 +18,6 @@ public enum TypeOperation {
                 return Stream.of(TypeOperation.values())
                         .filter(enumValue -> enumValue.name().equals(value.toUpperCase()))
                         .findFirst()
-                        .orElseThrow(IllegalArgumentException::new);
+                        .orElse(null);
         }
 }

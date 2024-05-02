@@ -16,17 +16,16 @@ public class AccountService {
     }
 
     public Account createAccount(String id) {
-        Account newAccount = new Account(id, 0L);
         Account account = findById(id);
         if (account != null) {
             return account;
         }
+        Account newAccount = new Account(id, 0L);
         accounts.put(id, newAccount);
         return newAccount;
     }
 
     public void cleanAccounts() {
         this.accounts.clear();
-        System.out.println(accounts);
     }
 }
