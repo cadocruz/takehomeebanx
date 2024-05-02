@@ -1,0 +1,16 @@
+meta {
+  name: Deposit
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8082/event
+  body: json
+  auth: none
+}
+
+body:json {
+  {"type":"deposit", "destination":"1", "amount": 25}
+  
+}

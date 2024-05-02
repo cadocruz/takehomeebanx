@@ -1,0 +1,15 @@
+meta {
+  name: Transfer
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:8082/event
+  body: json
+  auth: none
+}
+
+body:json {
+  {"type":"transfer", "origin":"100", "amount":15, "destination":"300"}
+}

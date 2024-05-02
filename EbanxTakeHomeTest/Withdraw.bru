@@ -1,0 +1,16 @@
+meta {
+  name: Withdraw
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:8082/event
+  body: json
+  auth: none
+}
+
+body:json {
+  {"type":"withdraw", "origin":"100", "amount":5}
+  
+}

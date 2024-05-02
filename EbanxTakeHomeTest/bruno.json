@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "EbanxTakeHomeTest",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
