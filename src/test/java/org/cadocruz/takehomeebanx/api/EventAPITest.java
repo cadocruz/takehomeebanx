@@ -1,10 +1,9 @@
 package org.cadocruz.takehomeebanx.api;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.cadocruz.takehomeebanx.domain.Account;
 import org.cadocruz.takehomeebanx.domain.TransactionRequest;
 import org.cadocruz.takehomeebanx.domain.TransactionResponse;
+import org.cadocruz.takehomeebanx.service.AccountService;
 import org.cadocruz.takehomeebanx.service.TransactionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,18 +12,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.cadocruz.takehomeebanx.domain.TypeOperation.*;
-import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -38,6 +30,9 @@ public class EventAPITest {
     private TransactionService transactionService;
 
     @Autowired
+    private AccountService accountService;
+
+    @Autowired
     private ObjectMapper objectMapper;
 
     TransactionRequest transactionRequestDeposit;
@@ -46,6 +41,7 @@ public class EventAPITest {
 
     @BeforeEach
     void setUp() {
+        accountService.cleanAccounts();
         transactionRequestDeposit = new TransactionRequest(DEPOSIT, "100", null, 10L);
         transactionRequestWithdraw = new TransactionRequest(WITHDRAW, null, "100", 10L);
         transactionRequestTransfer = new TransactionRequest(TRANSFER, "300", "100", 5L);

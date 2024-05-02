@@ -1,7 +1,6 @@
 package org.cadocruz.takehomeebanx.api.controllers;
 
 import org.cadocruz.takehomeebanx.api.TransactionAPI;
-import org.cadocruz.takehomeebanx.domain.Account;
 import org.cadocruz.takehomeebanx.domain.TransactionRequest;
 import org.cadocruz.takehomeebanx.domain.TransactionResponse;
 import org.cadocruz.takehomeebanx.service.TransactionService;
