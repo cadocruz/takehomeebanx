@@ -1,15 +1,9 @@
 package org.cadocruz.takehomeebanx.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import java.util.Optional;
 
-@Getter
-@ToString
-@AllArgsConstructor
-public class TransactionRequest {
-    private TypeOperation type;
-    private String destination;
-    private String origin;
-    private Long amount;
+public class TransactionRequest extends TransactionInput {
+    public TransactionRequest(TypeOperation type, Optional<String> origin, Optional<String> destination, Long amount) {
+        super(type, origin, destination, amount);
+    }
 }

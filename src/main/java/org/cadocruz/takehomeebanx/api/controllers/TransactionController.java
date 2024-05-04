@@ -19,7 +19,7 @@ public class TransactionController implements TransactionAPI {
     @Override
     public ResponseEntity<Object> createTransaction(@RequestBody TransactionRequest transaction) {
         try {
-            TransactionResponse transactionResponse = transactionService.createTransaction(transaction);
+            TransactionResponse transactionResponse = (TransactionResponse) transactionService.createTransaction(transaction);
             if (transactionResponse == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("0");
             }

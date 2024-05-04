@@ -14,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.util.Optional;
+
 import static org.cadocruz.takehomeebanx.domain.TypeOperation.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -42,9 +44,9 @@ public class EventAPITest {
     @BeforeEach
     void setUp() {
         accountService.cleanAccounts();
-        transactionRequestDeposit = new TransactionRequest(DEPOSIT, "100", null, 10L);
-        transactionRequestWithdraw = new TransactionRequest(WITHDRAW, null, "100", 10L);
-        transactionRequestTransfer = new TransactionRequest(TRANSFER, "300", "100", 5L);
+        transactionRequestDeposit = new TransactionRequest(DEPOSIT, null, Optional.of("100"), 10L);
+        transactionRequestWithdraw = new TransactionRequest(WITHDRAW, Optional.of("100"), null, 10L);
+        transactionRequestTransfer = new TransactionRequest(TRANSFER, Optional.of("100"), Optional.of("300"), 5L);
     }
 
     @Test

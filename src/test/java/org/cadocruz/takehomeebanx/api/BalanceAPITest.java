@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.util.Optional;
+
 import static org.cadocruz.takehomeebanx.domain.TypeOperation.DEPOSIT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -47,7 +49,7 @@ public class BalanceAPITest {
 
     @Test
     void testGetBalanceForExistingAccount() throws Exception {
-        TransactionRequest transactionRequestDeposit = new TransactionRequest(DEPOSIT, "100", null, 10L);
+        TransactionRequest transactionRequestDeposit = new TransactionRequest(DEPOSIT,  null, Optional.of("100"),10L);
         mvc.perform(post("/event").contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsBytes(transactionRequestDeposit)))
                 .andExpect(status().isCreated());
