@@ -21,5 +21,4 @@ public abstract class TransactionHandlerCommand implements TransactionCommand {
         }
         account.setBalance(account.getBalance() - amount);
     }
-
 }
